@@ -12,7 +12,7 @@ screen.appendChild(displayFormula);
 screen.appendChild(displayIO);
 
 let userInput;
-let formula;
+let formula = [];
 
 const clear = document.querySelector("#clear");
 clear.addEventListener("click", () => {
@@ -149,4 +149,16 @@ zero.addEventListener("click", () => {
     userInput = "0";
   }
   displayIO.textContent = userInput;
+});
+
+const times = document.querySelector("#times");
+times.addEventListener("click", () => {
+  if (formula.length < 1 && userInput !== undefined) {
+    formula.push(userInput);
+    displayFormula.textContent = `${formula[0]} x`;
+    userInput = 0;
+    displayIO.textContent = "";
+  } else if (formula.length >= 1 && userInput !== undefined) {
+    for (let i = 0; i < formula.length; i++) {}
+  }
 });
