@@ -57,7 +57,7 @@ body {
   align-items: flex-end;
   box-sizing: border-box;
   padding: 16px;
-  height: 15%;
+  height: 18%;
   width: 80%;
   background-color: var(--screenColor);
   border: 3px solid var(--borderColor);
@@ -65,11 +65,14 @@ body {
 }
 
 .displayFormula {
+  height: 16px;
+  padding-bottom: 5px;
   color: var(--formulaColor);
   font-size: 1rem;
 }
 
-.displayIO {
+.displayUser {
+  height: 25px;
   color: var(--ioColor);
   font-size: 1.3rem;
   font-weight: bold;
@@ -122,7 +125,7 @@ body {
   background-color: var(--funcBackground);
 }
 
-#times,
+#mult,
 #plus,
 #minus {
   border: 1px solid var(--oppColor);
