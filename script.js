@@ -82,3 +82,47 @@ zero.addEventListener("click", () => {
   userInput.push(0);
   displayUser.textContent = userInput.join("");
 });
+
+const mult = document.querySelector("#mult");
+mult.addEventListener("click", () => {
+  if (userInput.length !== 0) {
+    userInput = userInput.join("");
+    formula.push(userInput, "x");
+    userInput = [];
+    displayFormula.textContent = formula.join(" ");
+    displayUser.textContent = userInput;
+  }
+});
+
+const plus = document.querySelector("#plus");
+plus.addEventListener("click", () => {
+  if (userInput !== 0) {
+    userInput = userInput.join("");
+    formula.push(userInput, "+");
+    userInput = [];
+    displayFormula.textContent = formula.join(" ");
+    displayUser.textContent = userInput;
+  }
+});
+
+const minus = document.querySelector("#minus");
+minus.addEventListener("click", () => {
+  if (userInput !== 0) {
+    userInput = userInput.join("");
+    formula.push(userInput, "-");
+    userInput = [];
+    displayFormula.textContent = formula.join(" ");
+    displayUser.textContent = userInput;
+  }
+});
+
+const comma = document.querySelector("#comma");
+comma.addEventListener("click", () => {
+  if (userInput !== 0) {
+    userInput.push(".");
+    displayUser.textContent = userInput.join("");
+  }
+});
+
+const equals = document.querySelector("#equals");
+equals.addEventListener("click", () => {});
