@@ -106,7 +106,11 @@ body {
 }
 
 #delete {
-  grid-area: 1 / 3 / span 1 / span 2;
+  grid-area: 1 / 3 / span 1 / span 1;
+}
+
+#divide {
+  grid-area: 1 / 4 / span 1 / span 1;
 }
 
 #zero {
@@ -127,7 +131,8 @@ body {
 
 #mult,
 #plus,
-#minus {
+#minus,
+#divide {
   border: 1px solid var(--oppColor);
   color: var(--oppColor);
   background-color: var(--oppBackground);

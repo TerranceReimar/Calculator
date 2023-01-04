@@ -87,7 +87,7 @@ const mult = document.querySelector("#mult");
 mult.addEventListener("click", () => {
   if (userInput.length !== 0) {
     userInput = userInput.join("");
-    formula.push(userInput, "x");
+    formula.push(userInput, "*");
     userInput = [];
     displayFormula.textContent = formula.join(" ");
     displayUser.textContent = userInput;
@@ -110,6 +110,17 @@ minus.addEventListener("click", () => {
   if (userInput !== 0) {
     userInput = userInput.join("");
     formula.push(userInput, "-");
+    userInput = [];
+    displayFormula.textContent = formula.join(" ");
+    displayUser.textContent = userInput;
+  }
+});
+
+const divide = document.querySelector("#divide");
+divide.addEventListener("click", () => {
+  if (userInput !== 0) {
+    userInput = userInput.join("");
+    formula.push(userInput, "/");
     userInput = [];
     displayFormula.textContent = formula.join(" ");
     displayUser.textContent = userInput;
