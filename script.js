@@ -8,11 +8,13 @@ screen.appendChild(displayUser);
 
 let userInput = [];
 let formula = [];
+let result;
 
 const clear = document.querySelector("#clear");
 clear.addEventListener("click", () => {
   userInput = [];
   formula = [];
+  result = null;
   displayFormula.textContent = "";
   displayUser.textContent = "";
 });
@@ -136,4 +138,14 @@ comma.addEventListener("click", () => {
 });
 
 const equals = document.querySelector("#equals");
-equals.addEventListener("click", () => {});
+equals.addEventListener("click", () => {
+  if (userInput !== 0) {
+    userInput = userInput.join("");
+    formula.push(userInput);
+    userInput = [];
+    formula = formula.join(" ");
+    result = eval(formula);
+    displayFormula.textContent = formula;
+    displayUser.textContent = result;
+  }
+});
