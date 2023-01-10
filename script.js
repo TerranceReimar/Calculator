@@ -21,89 +21,90 @@ clear.addEventListener("click", () => {
 
 const del = document.querySelector("#delete");
 del.addEventListener("click", () => {
-  userInput.pop();
-  displayUser.textContent = userInput.join("");
+  if (userInput.lenght !== 0) {
+    userInput.pop();
+    displayUser.textContent = userInput.join("");
+  }
 });
+
+const inputNumber = (num) => {
+  if (displayUser.textContent !== result) {
+    userInput.push(num);
+    displayUser.textContent = userInput.join("");
+  }
+};
 
 const one = document.querySelector("#one");
-one.addEventListener("click", () => {
-  userInput.push("1");
-  displayUser.textContent = userInput.join("");
-});
+one.addEventListener("click", () => inputNumber(1));
 
 const two = document.querySelector("#two");
-two.addEventListener("click", () => {
-  userInput.push(2);
-  displayUser.textContent = userInput.join("");
-});
+two.addEventListener("click", () => inputNumber(2));
 
 const three = document.querySelector("#three");
-three.addEventListener("click", () => {
-  userInput.push(3);
-  displayUser.textContent = userInput.join("");
-});
+three.addEventListener("click", () => inputNumber(3));
 
 const four = document.querySelector("#four");
-four.addEventListener("click", () => {
-  userInput.push(4);
-  displayUser.textContent = userInput.join("");
-});
+four.addEventListener("click", () => inputNumber(4));
 
 const five = document.querySelector("#five");
-five.addEventListener("click", () => {
-  userInput.push(5);
-  displayUser.textContent = userInput.join("");
-});
+five.addEventListener("click", () => inputNumber(5));
 
 const six = document.querySelector("#six");
-six.addEventListener("click", () => {
-  userInput.push(6);
-  displayUser.textContent = userInput.join("");
-});
+six.addEventListener("click", () => inputNumber(6));
 
 const seven = document.querySelector("#seven");
-seven.addEventListener("click", () => {
-  userInput.push(7);
-  displayUser.textContent = userInput.join("");
-});
+seven.addEventListener("click", () => inputNumber(7));
 
 const eight = document.querySelector("#eight");
-eight.addEventListener("click", () => {
-  userInput.push(8);
-  displayUser.textContent = userInput.join("");
-});
+eight.addEventListener("click", () => inputNumber(8));
 
 const nine = document.querySelector("#nine");
-nine.addEventListener("click", () => {
-  userInput.push(9);
-  displayUser.textContent = userInput.join("");
-});
+nine.addEventListener("click", () => inputNumber(9));
 
 const zero = document.querySelector("#zero");
-zero.addEventListener("click", () => {
-  userInput.push(0);
-  displayUser.textContent = userInput.join("");
-});
+zero.addEventListener("click", () => inputNumber(0));
 
 const mult = document.querySelector("#mult");
 mult.addEventListener("click", () => {
-  if (userInput.length !== 0) {
+  if (formula.length == 0) {
     userInput = userInput.join("");
-    formula.push(userInput, "*");
+    formula.push(userInput);
     userInput = [];
-    displayFormula.textContent = formula.join(" ");
     displayUser.textContent = userInput;
+    displayFormula.textContent = `${formula} x`;
+  } else {
+    if (formula.length > 0 && userInput.length > 0) {
+      userInput = userInput.join("");
+      result = multiply(formula[0], userInput);
+      formula = [];
+      formula.push(result);
+      formula.push(userInput);
+      userInput = [];
+      displayFormula.textContent = `${formula[0]} x`;
+      displayUser.textContent = "";
+    }
   }
 });
 
 const plus = document.querySelector("#plus");
 plus.addEventListener("click", () => {
-  if (userInput !== 0) {
+  if (formula.length == 0) {
     userInput = userInput.join("");
-    formula.push(userInput, "+");
+    formula.push(userInput);
     userInput = [];
-    displayFormula.textContent = formula.join(" ");
     displayUser.textContent = userInput;
+    displayFormula.textContent = `${formula} +`;
+  } else {
+    if (formula.length > 0 && userInput.length > 0) {
+      userInput = userInput.join("");
+      result = addition(formula[0], userInput);
+      formula = [];
+      formula.push(result);
+      formula.push(userInput);
+      userInput = [];
+      displayFormula.textContent = `${formula[0]} +`;
+      displayUser.textContent = "";
+    }
   }
 });
 
@@ -139,13 +140,36 @@ comma.addEventListener("click", () => {
 
 const equals = document.querySelector("#equals");
 equals.addEventListener("click", () => {
-  if (userInput !== 0) {
-    userInput = userInput.join("");
-    formula.push(userInput);
-    userInput = [];
-    formula = formula.join(" ");
-    result = eval(formula);
-    displayFormula.textContent = formula;
-    displayUser.textContent = result;
+  if (formula.length !== 0 && userInput !== undefined) {
+    if (displayFormula.textContent.indexOf("x") != -1) {
+      userInput = userInput.join("");
+      formula.push(userInput);
+      userInput = [];
+      result = multiply(formula[0], formula[1]);
+      displayUser.textContent = result;
+      displayFormula.textContent = `${formula[0]} x ${formula[1]}`;
+    }
+    if (displayFormula.textContent.indexOf("/") !== -1) {
+    }
+    if (displayFormula.textContent.indexOf("+") !== -1) {
+    }
+    if (displayFormula.textContent.indexOf("-") !== -1) {
+    }
   }
 });
+
+let multiply = (num1, num2) => {
+  return (num1 *= num2);
+};
+
+let devide = (num1, num2) => {
+  return (num1 /= num2);
+};
+
+let addition = (num1, num2) => {
+  return parseInt(num1) += parseInt(num2);
+};
+
+let subtract = (num1, num2) => {
+  return num1 - num2;
+};
